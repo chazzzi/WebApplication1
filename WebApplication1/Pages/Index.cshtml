@@ -1,0 +1,34 @@
+﻿@page
+@model WebApplication1.Pages.IndexModel
+@{
+    ViewData["Title"] = "Average Tracker";
+}
+
+<h1>Average Tracker</h1>
+
+<form method="post">
+    <div>
+        <label for="newValue">Enter a Number:</label>
+        <input type="number" id="newValue" name="NewValue" step="0.01" required />
+    </div>
+    <div>
+        <button type="submit">Add Value</button>
+    </div>
+</form>
+
+<h2>Current Average: @Model.CurrentAverage</h2>
+
+@if (Model.EnteredValues != null && Model.EnteredValues.Any())
+{
+    <h3>Entered Values:</h3>
+    <ul>
+        @foreach (var value in Model.EnteredValues)
+        {
+            <li>@value</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No values have been entered yet.</p>
+}
